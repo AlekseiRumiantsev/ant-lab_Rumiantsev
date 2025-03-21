@@ -10,8 +10,7 @@ def adc():
         signal = [int(elem) for elem in bin(value)[2:].zfill(8)]
         GPIO.output(dac, signal)
         time.sleep(0.007)
-        compValue = GPIO.input(comp)
-        if compValue == 1:
+        if GPIO.input(comp) == 1:
             voltage = value * 3.3 / 256
             print("signal = ", signal, "voltage = ", voltage)
             break
